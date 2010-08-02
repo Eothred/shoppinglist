@@ -81,12 +81,13 @@ void ShoppingListForm::addNewItem()
     QLineEdit *amountBox = new QLineEdit();
     amountBox->setObjectName(QString::fromUtf8("amountBox"));
     amountBox->setMaximumSize(QSize(80, 16777215));
-    amountBox->setMinimumHeight(30);
+    amountBox->setMinimumHeight(38);
 
     itemLayout->addWidget(amountBox);
 
     QLineEdit *itemName = new QLineEdit();
     itemName->setObjectName(QString::fromUtf8("itemName"));
+    itemName->setMinimumHeight(38);
 
     itemLayout->addWidget(itemName);
 
@@ -97,6 +98,7 @@ void ShoppingListForm::addNewItem()
     QPushButton *deleteButton = new QPushButton();
     deleteButton->setObjectName(QString::fromUtf8("deleteButton"));
     deleteButton->setText("Remove");
+    deleteButton->setMinimumHeight(38);
     //deleteButton->setCenterButtons(false);
 
     itemLayout->addWidget(deleteButton);
