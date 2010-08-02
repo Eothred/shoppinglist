@@ -75,12 +75,9 @@
       </spacer>
      </item>
      <item>
-      <widget class="QDialogButtonBox" name="deleteButton">
-       <property name="standardButtons">
-        <set>QDialogButtonBox::Discard</set>
-       </property>
-       <property name="centerButtons">
-        <bool>false</bool>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Delete</string>
        </property>
       </widget>
      </item>
@@ -92,39 +89,22 @@
   <tabstop>itemName</tabstop>
   <tabstop>numberOfItems</tabstop>
   <tabstop>haveFoundCheckBox</tabstop>
-  <tabstop>deleteButton</tabstop>
  </tabstops>
  <resources/>
  <connections>
   <connection>
-   <sender>deleteButton</sender>
-   <signal>clicked(QAbstractButton*)</signal>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
    <receiver>itemName</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>222</x>
-     <y>20</y>
+     <x>346</x>
+     <y>27</y>
     </hint>
     <hint type="destinationlabel">
-     <x>195</x>
-     <y>20</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>deleteButton</sender>
-   <signal>clicked(QAbstractButton*)</signal>
-   <receiver>numberOfItems</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>253</x>
-     <y>24</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>62</x>
-     <y>32</y>
+     <x>179</x>
+     <y>31</y>
     </hint>
    </hints>
   </connection>

@@ -47,6 +47,7 @@ ShoppingListForm::ShoppingListForm(QWidget *parent)
     : QWidget(parent)
 {
     ui.setupUi(this);
+
 }
 //! [0]
 
@@ -57,6 +58,8 @@ void ShoppingListForm::on_newItemButton_clicked()
 {
     std::cout << "Clicked new item button\n";
     addNewItem();
+    ui.mainLayout->setSizeConstraint(QLayout::SetFixedSize);
+    ui.scrollArea->update();
     //itemFrame myItem;
     //ui.mainLayout->addWidget(myItem);
 //    ui.outputWidget->setText(QString::number(value + ui.inputSpinBox2->value()));
@@ -68,16 +71,18 @@ void ShoppingListForm::addNewItem()
     // copied from ui_itemFrame.h
     QHBoxLayout *itemLayout = new QHBoxLayout();
     itemLayout->setObjectName(QString::fromUtf8("itemLayout"));
-    QCheckBox *haveFoundCheckBox = new QCheckBox();
-    haveFoundCheckBox->setObjectName(QString::fromUtf8("haveFoundCheckBox"));
+    itemLayout->setSizeConstraint(QLayout::SetFixedSize);
+    //QCheckBox *haveFoundCheckBox = new QCheckBox();
+    //haveFoundCheckBox->setObjectName(QString::fromUtf8("haveFoundCheckBox"));
 
-    itemLayout->addWidget(haveFoundCheckBox);
+    //itemLayout->addWidget(haveFoundCheckBox);
 
-    QLineEdit *numberOfItems = new QLineEdit();
-    numberOfItems->setObjectName(QString::fromUtf8("numberOfItems"));
-    numberOfItems->setMaximumSize(QSize(40, 16777215));
+    QLineEdit *amountBox = new QLineEdit();
+    amountBox->setObjectName(QString::fromUtf8("amountBox"));
+    amountBox->setMaximumSize(QSize(80, 16777215));
+    amountBox->setMinimumHeight(30);
 
-    itemLayout->addWidget(numberOfItems);
+    itemLayout->addWidget(amountBox);
 
     QLineEdit *itemName = new QLineEdit();
     itemName->setObjectName(QString::fromUtf8("itemName"));
@@ -88,19 +93,21 @@ void ShoppingListForm::addNewItem()
 
     itemLayout->addItem(horizontalSpacer);
 
-    QDialogButtonBox *deleteButton = new QDialogButtonBox();
+    QPushButton *deleteButton = new QPushButton();
     deleteButton->setObjectName(QString::fromUtf8("deleteButton"));
-    deleteButton->setStandardButtons(QDialogButtonBox::Discard);
-    deleteButton->setCenterButtons(false);
+    deleteButton->setText("Remove");
+    //deleteButton->setCenterButtons(false);
 
     itemLayout->addWidget(deleteButton);
     // end of copied from ui_itemFrame.h
-    QObject::connect(deleteButton, SIGNAL(clicked(QAbstractButton*)), haveFoundCheckBox, SLOT(deleteLater()));
-    QObject::connect(deleteButton, SIGNAL(clicked(QAbstractButton*)), numberOfItems, SLOT(deleteLater()));
-    QObject::connect(deleteButton, SIGNAL(clicked(QAbstractButton*)), itemName, SLOT(deleteLater()));
-    QObject::connect(deleteButton, SIGNAL(clicked(QAbstractButton*)), deleteButton, SLOT(deleteLater()));
-    QObject::connect(deleteButton, SIGNAL(clicked(QAbstractButton*)), itemLayout, SLOT(deleteLater()));
-    QObject::connect(deleteButton, SIGNAL(clicked(QAbstractButton*)), ui.mainLayout, SLOT(update()));
+    // Doesn't work atm?
+    //QObject::connect(deleteButton, SIGNAL(clicked(QAbstractButton*)), haveFoundCheckBox, SLOT(deleteLater()));
+    QObject::connect(deleteButton, SIGNAL(clicked()), amountBox, SLOT(deleteLater()));
+    QObject::connect(deleteButton, SIGNAL(clicked()), itemName, SLOT(deleteLater()));
+    QObject::connect(deleteButton, SIGNAL(clicked()), deleteButton, SLOT(deleteLater()));
+    QObject::connect(deleteButton, SIGNAL(clicked()), itemLayout, SLOT(deleteLater()));
     ui.mainLayout->addLayout(itemLayout);
+    QRect r1(100, 400, 11, 16);
+    ui.mainLayout->setGeometry(r1);
 }
 

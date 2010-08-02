@@ -26,10 +26,7 @@
    <property name="spacing">
     <number>6</number>
    </property>
-   <item row="0" column="1">
-    <layout class="QVBoxLayout" name="mainLayout"/>
-   </item>
-   <item row="1" column="1">
+   <item row="1" column="0">
     <widget class="QPushButton" name="newItemButton">
      <property name="toolTip">
       <string>Add a new item</string>
@@ -39,7 +36,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
+   <item row="2" column="0">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -52,17 +49,71 @@
      </property>
     </spacer>
    </item>
-   <item row="0" column="2">
-    <widget class="QScrollBar" name="verticalScrollBar">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
+   <item row="0" column="0">
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOn</enum>
      </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="widgetResizable">
+      <bool>false</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>359</width>
+        <height>117</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>361</width>
+         <height>261</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="mainLayout">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
+       </layout>
+      </widget>
+     </widget>
     </widget>
    </item>
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>newItemButton</sender>
+   <signal>clicked()</signal>
+   <receiver>scrollArea</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>254</x>
+     <y>156</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>250</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
  <slots>
   <slot>newItem_clicked()</slot>
  </slots>
