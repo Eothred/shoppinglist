@@ -52,6 +52,7 @@ class ShoppingListForm : public QWidget
 
 public:
     ShoppingListForm(QWidget *parent = 0);
+    int widgetsize;
 
 private slots:
     void on_newItemButton_clicked();

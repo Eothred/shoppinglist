@@ -66,7 +66,7 @@
         <x>0</x>
         <y>0</y>
         <width>359</width>
-        <height>117</height>
+        <height>400</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -75,7 +75,7 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>0</x>

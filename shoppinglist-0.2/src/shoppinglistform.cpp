@@ -47,6 +47,7 @@ ShoppingListForm::ShoppingListForm(QWidget *parent)
     : QWidget(parent)
 {
     ui.setupUi(this);
+    widgetsize=40;
 
 }
 //! [0]
@@ -107,7 +108,7 @@ void ShoppingListForm::addNewItem()
     QObject::connect(deleteButton, SIGNAL(clicked()), deleteButton, SLOT(deleteLater()));
     QObject::connect(deleteButton, SIGNAL(clicked()), itemLayout, SLOT(deleteLater()));
     ui.mainLayout->addLayout(itemLayout);
-    QRect r1(100, 400, 11, 16);
-    ui.mainLayout->setGeometry(r1);
+    widgetsize+=40;
+    ui.scrollAreaContents->setFixedHeight(widgetsize);
 }
 
