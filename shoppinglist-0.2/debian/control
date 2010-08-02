@@ -1,0 +1,14 @@
+Source: shoppinglist
+Section: unknown
+Priority: extra
+Maintainer: Yngve Inntjore Levinsen <yngve.levinsen@gmail.com>
+Build-Depends: debhelper (>= 5),libhildon1-dev,libqt4-dev
+Standards-Version: 3.7.2
+
+Package: shoppinglist
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: A simple shopping list application written in Qt
+ A simple application written in Qt, more for me learning
+ Qt and Maemo development than anything else. Released under
+ GPL, and I welcome anyone to modify as they want! :)

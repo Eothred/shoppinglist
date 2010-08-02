@@ -1,0 +1,4 @@
+# Service description file
+[D-BUS Service]
+Name=org.indt.shoppinglist
+Exec=/usr/bin/shoppinglist
