@@ -38,21 +38,24 @@
 **
 ****************************************************************************/
 
-#ifndef SHOPPINGLISTFORM_H
-#define SHOPPINGLISTFORM_H
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
-//! [0]
-#include "ui_shoppinglistform.h"
-//! [0]
+#include <QMainWindow>
 
-//! [1]
-class ShoppingListForm : public QWidget
+namespace Ui {
+    class MainWindow;
+}
+
+
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    ShoppingListForm(QWidget *parent = 0);
-    int widgetsize;
+    explicit MainWindow(QWidget *parent = 0);
+    ~MainWindow();
+
 public slots:
     void itemWasRemoved();
 
@@ -61,8 +64,8 @@ private slots:
     void addNewItem();
 
 private:
-    Ui::ShoppingListForm ui;
+    Ui::MainWindow *ui;
+    int widgetsize;
 };
-//! [1]
 
-#endif
+#endif // MAINWINDOW_H

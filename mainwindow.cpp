@@ -40,60 +40,67 @@
 
 #include <QtGui>
 #include <iostream>
-#include "shoppinglistform.h"
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 
 //! [0]
-ShoppingListForm::ShoppingListForm(QWidget *parent)
-    : QWidget(parent)
+MainWindow::MainWindow(QWidget *parent) :
+        QMainWindow(parent),
+        ui(new Ui::MainWindow)
 {
-    ui.setupUi(this);
+    ui->setupUi(this);
     widgetsize=40;
 
 }
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
 //! [0]
 
 
 
 //! [1]
-void ShoppingListForm::on_newItemButton_clicked()
+void MainWindow::on_newItemButton_clicked()
 {
     std::cout << "Clicked new item button\n";
     addNewItem();
-    ui.mainLayout->setSizeConstraint(QLayout::SetFixedSize);
-    ui.scrollArea->update();
-    //itemFrame myItem;
-    //ui.mainLayout->addWidget(myItem);
-//    ui.outputWidget->setText(QString::number(value + ui.inputSpinBox2->value()));
+    ui->mainLayout->setSizeConstraint(QLayout::SetFixedSize);
+    ui->scrollArea->update();
 }
 //! [1]
 
-void ShoppingListForm::addNewItem()
+void MainWindow::addNewItem()
 {
     // copied from ui_itemFrame.h
     QHBoxLayout *itemLayout = new QHBoxLayout();
     itemLayout->setObjectName(QString::fromUtf8("itemLayout"));
-    itemLayout->setSizeConstraint(QLayout::SetNoConstraint);
-    //QCheckBox *haveFoundCheckBox = new QCheckBox();
-    //haveFoundCheckBox->setObjectName(QString::fromUtf8("haveFoundCheckBox"));
+    itemLayout->setSizeConstraint(QLayout::SetFixedSize);
+    QCheckBox *haveFoundCheckBox = new QCheckBox();
+    haveFoundCheckBox->setObjectName(QString::fromUtf8("haveFoundCheckBox"));
+    haveFoundCheckBox->setMinimumHeight(30);
 
-    //itemLayout->addWidget(haveFoundCheckBox);
+    itemLayout->addWidget(haveFoundCheckBox);
 
     QLineEdit *amountBox = new QLineEdit();
     amountBox->setObjectName(QString::fromUtf8("amountBox"));
     amountBox->setMaximumSize(QSize(80, 16777215));
     amountBox->setMinimumHeight(38);
+    amountBox->setMinimumWidth(100);
 
     itemLayout->addWidget(amountBox);
 
     QLineEdit *itemName = new QLineEdit();
     itemName->setObjectName(QString::fromUtf8("itemName"));
     itemName->setMinimumHeight(38);
+    itemName->setMinimumWidth(300);
 
     itemLayout->addWidget(itemName);
 
-    //QSpacerItem *horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+    QSpacerItem *horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-    //itemLayout->addItem(horizontalSpacer);
+    itemLayout->addItem(horizontalSpacer);
 
     QPushButton *deleteButton = new QPushButton();
     deleteButton->setObjectName(QString::fromUtf8("deleteButton"));
@@ -108,14 +115,15 @@ void ShoppingListForm::addNewItem()
     QObject::connect(deleteButton, SIGNAL(clicked()), amountBox, SLOT(deleteLater()));
     QObject::connect(deleteButton, SIGNAL(clicked()), itemName, SLOT(deleteLater()));
     QObject::connect(deleteButton, SIGNAL(clicked()), deleteButton, SLOT(deleteLater()));
+    QObject::connect(deleteButton, SIGNAL(clicked()), haveFoundCheckBox, SLOT(deleteLater()));
     QObject::connect(deleteButton, SIGNAL(clicked()), itemLayout, SLOT(deleteLater()));
     QObject::connect(deleteButton, SIGNAL(clicked()), this,SLOT(itemWasRemoved()));
-    ui.mainLayout->addLayout(itemLayout);
+    ui->mainLayout->addLayout(itemLayout);
     widgetsize+=80; // in principle should also reduce when removing item, need to create a slot...
-    ui.scrollAreaContents->setFixedHeight(widgetsize);
+    ui->scrollAreaContents->setFixedHeight(widgetsize);
 }
 
-void ShoppingListForm::itemWasRemoved() {
+void MainWindow::itemWasRemoved() {
     widgetsize-=80;
-    ui.scrollAreaContents->setFixedHeight(widgetsize);
+    ui->scrollAreaContents->setFixedHeight(widgetsize);
 }

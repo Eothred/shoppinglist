@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ShoppingListForm</class>
- <widget class="QWidget" name="ShoppingListForm">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -10,125 +10,60 @@
     <height>480</height>
    </rect>
   </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
   <property name="windowTitle">
-   <string>Shopping List</string>
+   <string>MainWindow</string>
   </property>
-  <layout class="QGridLayout">
-   <property name="margin">
-    <number>9</number>
-   </property>
-   <property name="spacing">
-    <number>6</number>
-   </property>
-   <item row="1" column="0">
-    <widget class="QPushButton" name="newItemButton">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="newItemButton">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>360</y>
+      <width>721</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>New Item</string>
+    </property>
+   </widget>
+   <widget class="QScrollArea" name="scrollArea">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>30</y>
+      <width>721</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaContents">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>715</width>
+       <height>295</height>
+      </rect>
      </property>
-     <property name="minimumSize">
-      <size>
-       <width>800</width>
-       <height>80</height>
-      </size>
-     </property>
-     <property name="toolTip">
-      <string>Add a new item</string>
-     </property>
-     <property name="text">
-      <string>New item</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QScrollArea" name="scrollArea">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>800</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOn</enum>
-     </property>
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
-     </property>
-     <property name="widgetResizable">
-      <bool>false</bool>
-     </property>
-     <widget class="QWidget" name="scrollAreaContents">
+     <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>359</width>
-        <height>40</height>
+        <width>771</width>
+        <height>361</height>
        </rect>
       </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>771</width>
-         <height>371</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="mainLayout">
-        <property name="sizeConstraint">
-         <enum>QLayout::SetNoConstraint</enum>
-        </property>
-       </layout>
-      </widget>
+      <layout class="QVBoxLayout" name="mainLayout"/>
      </widget>
     </widget>
-   </item>
-  </layout>
+   </widget>
+  </widget>
  </widget>
+ <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections>
-  <connection>
-   <sender>newItemButton</sender>
-   <signal>clicked()</signal>
-   <receiver>scrollArea</receiver>
-   <slot>update()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>254</x>
-     <y>156</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>250</x>
-     <y>99</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
- <slots>
-  <slot>newItem_clicked()</slot>
- </slots>
+ <connections/>
 </ui>
