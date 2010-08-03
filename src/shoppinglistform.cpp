@@ -72,7 +72,7 @@ void ShoppingListForm::addNewItem()
     // copied from ui_itemFrame.h
     QHBoxLayout *itemLayout = new QHBoxLayout();
     itemLayout->setObjectName(QString::fromUtf8("itemLayout"));
-    itemLayout->setSizeConstraint(QLayout::SetFixedSize);
+    itemLayout->setSizeConstraint(QLayout::SetNoConstraint);
     //QCheckBox *haveFoundCheckBox = new QCheckBox();
     //haveFoundCheckBox->setObjectName(QString::fromUtf8("haveFoundCheckBox"));
 
@@ -111,11 +111,11 @@ void ShoppingListForm::addNewItem()
     QObject::connect(deleteButton, SIGNAL(clicked()), itemLayout, SLOT(deleteLater()));
     QObject::connect(deleteButton, SIGNAL(clicked()), this,SLOT(itemWasRemoved()));
     ui.mainLayout->addLayout(itemLayout);
-    widgetsize+=50; // in principle should also reduce when removing item, need to create a slot...
+    widgetsize+=80; // in principle should also reduce when removing item, need to create a slot...
     ui.scrollAreaContents->setFixedHeight(widgetsize);
 }
 
 void ShoppingListForm::itemWasRemoved() {
-    widgetsize-=50;
+    widgetsize-=80;
     ui.scrollAreaContents->setFixedHeight(widgetsize);
 }
