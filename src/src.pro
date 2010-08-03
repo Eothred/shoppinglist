@@ -10,7 +10,9 @@ SOURCES = shoppinglistform.cpp \
     main.cpp
 
 TARGET = shoppinglist
-    
+
+QT       += core gui
+
 unix {
   #VARIABLES
   isEmpty(PREFIX) {
@@ -47,3 +49,14 @@ unix {
   icon64.files += ../data/64x64/$${TARGET}.png
 }
 
+TEMPLATE = app
+
+CONFIG += mobility
+MOBILITY =
+
+symbian {
+    TARGET.UID3 = 0xefecf024
+    # TARGET.CAPABILITY +=
+    TARGET.EPOCSTACKSIZE = 0x14000
+    TARGET.EPOCHEAPSIZE = 0x020000 0x800000
+}
