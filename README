@@ -1,0 +1,10 @@
+This project is written with the Nokia Qt SDK, and is built for the Nokia N900. It is not aimed to necessarily be useful, more trying to learn gui programming etc..
+
+How to install:
+- Open the project in Nokia Qt SDK and build for Maemo (or desktop if you wish)
+- If Maemo build: transfer the .deb file to your mobile
+- Open terminal on your mobile and cd to your folder
+- Get root priviliges, there is one package which gives that by "sudo gainroot", another which is simply "root". Google it.
+- With root privilges, run "dpkg -i <deb packagename>"
+- At the moment, this installs a binary in /usr/bin/, but no entry yet in the application list. Run "shoppinglist" from terminal.
+- Enjoy
